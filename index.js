@@ -10,7 +10,7 @@ const ClientConfig = require('./config.json');
 const Prefix = ClientConfig.CommandPrefix || '?';
 
 // Logging on
-Client.connect({token:"Mjc1Nzc4ODgyMDYwNDE5MDcz.DGKKgQ.Jby-l0hwTCleySfeas0Q7vVuhUk"});
+Client.connect({token:ClientConfig.ClientToken});
 
 // Set up
 var CommandsFolder = fs.readdirSync('./Commands');
