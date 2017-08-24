@@ -26,16 +26,16 @@ module.exports = {
         return Command;
     },
     // User Data [ Profiles ]
-    createProfile(User,Nickname) {
+    createProfile(User,GivenNickname) {
         if (!User) { console.error('User not given to createProfile') };
-        if (!Nickname) {
-            Nickname = User.username;
+        if (!GivenNickname) {
+            GivenNickname = User.username;
         }
         if (!profileExists(User.id)) {
             var NewProfile = {
                 Name: User.username,
                 Discriminator: User.discriminator,
-                Nickname: Nickname,
+                Nickname: GivenNickname,
                 Upvotes: 0,
             }
             UserData[User.id] = NewProfile;

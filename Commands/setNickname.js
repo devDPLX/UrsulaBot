@@ -23,7 +23,7 @@ module.exports = class SetNicknameClass extends Command {
         if (Utility.isNicknameAvailable(Nickname)) {
             var Profile = Utility.getProfile(Author.id);
             if (!Profile) {
-                Profile = Utility.createProfile(Author.id,Nickname);
+                Profile = Utility.createProfile(Author,Nickname);
             } else {
                 Utility.updateProfile(Author.id,'Nickname',Nickname);
             }
