@@ -11,6 +11,7 @@ module.exports = class CheckOWRank extends Command {
             Name: "CheckOWRank",
             Command: "owrank",
             Description: "Checks the rank of the user given (by BattleTag)",
+            Usage: "owrank <battletag>",
             NSFW: false,
         })
     }
@@ -24,21 +25,17 @@ module.exports = class CheckOWRank extends Command {
             Channel.sendMessage('I need a BattleTag to search.');
             return false;
         }
-        console.log(URLTemplate + BattleTag + '/stats');
         Snekfetch.get(URLTemplate + BattleTag + '/stats').then(Data => {
             Data = JSON.parse(Data.text);
             //
             const OverallStats = Data.us.stats.competitive.overall_stats;
-            console.log(OverallStats);
             var Embed = [
                 {'name': 'Level','value': ((OverallStats.prestige * 100) + OverallStats.level).toString()},
                 {'name': 'Competitive Rank','value': (OverallStats.comprank).toString()},
                 {'name': 'Win Rate','value': (OverallStats.win_rate).toString()},
             ]
-            console.log('passed5');
             var Avatar = OverallStats.avatar;
             var UTCDate = new Date();
-            console.log(UTCDate.toISOString());
             //
             Channel.sendMessage('',false, {
                 //color: 'f99e1a',

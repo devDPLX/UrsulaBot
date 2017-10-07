@@ -69,8 +69,28 @@ Client.Dispatcher.on("MESSAGE_CREATE", e => {
             if (Command.Command == Data[0]) {
                 Data.splice(0,1);
                 Command.run(e.message,Data);
+                return;
             }
             delete Command;
+        }
+        if (Data[0] == 'help') {
+            var HelpCommand = Data[1];
+            var HelpOutput = 'Sorry, I couldn\'t find that command. Use **' + Prefix + 'help** for a list of commands.';
+            if (!HelpCommand) { HelpOutput = ''; }
+            for (var i in CommandList) {
+                var Command = CommandList[i];
+                Command = new Command(Client);
+                if (HelpCommand && Command.Command == HelpCommand) {
+                    HelpOutput = 
+                    '**Command: **' + Command.Command + '\n' +
+                    '**Description: **' + Command.Description + '\n' + 
+                    '**Usage: **' + Prefix + Command.Usage + '\n' +
+                    '**NSFW: **' + Command.NSFW;
+                } else if (!HelpCommand) {
+                    HelpOutput += '**' + Command.Command + ': **' + Command.Description + '\n';
+                }
+            }
+            Channel.sendMessage(HelpOutput);
         }
     }
 })

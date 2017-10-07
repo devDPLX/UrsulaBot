@@ -7,6 +7,7 @@ module.exports = class SetNicknameClass extends Command {
             Name: 'SetNickname',
             Command: 'nickname',
             Description: 'Sets your nickname',
+            Usage: 'nickname <one-word name>',
             NSFW: false,
         })
     }

@@ -6,6 +6,7 @@ module.exports = class TestCommand extends Command {
             Name: 'testcommand',
             Command: 'test',
             Description: 'Just a test command',
+            Usage: 'test',
             NSFW: false,
         })
     }

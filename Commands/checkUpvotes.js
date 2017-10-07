@@ -7,6 +7,7 @@ module.exports = class CheckUpvotesCommand extends Command {
             Name: "CheckUpvotes",
             Command: "upvotes",
             Description: "Checks the upvotes of the user given (yourself if a user isnt given)",
+            Usage: "upvotes [nickname/discord tag]",
             NSFW: false,
         })
     }
